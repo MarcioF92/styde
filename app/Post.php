@@ -25,6 +25,11 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function subscribers()
+    {
+        return $this->belongsToMany(User::class, 'subscriptions');
+    }
+
     public function lastestComments()
     {
         return $this->comments()->orderBy('created_at', 'DESC');

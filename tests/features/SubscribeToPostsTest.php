@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class SubscribeToPostsTest extends TestCase
+class SubscribeToPostsTest extends FeatureTestCase
 {
     function test_a_user_can_subscribe_to_a_post()
     {
