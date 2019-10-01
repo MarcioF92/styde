@@ -1,4 +1,8 @@
 <?php
+
+use App\Post;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 /**
  * Created by PhpStorm.
  * User: marcio
@@ -9,14 +13,18 @@
 class CreatePostsTest extends FeatureTestCase
 {
 
+    use DatabaseTransactions;
+
     public function test_a_user_create_a_post()
     {
+
+        $user = $this->defaultUser();
 
         // Having
         $title = 'Esta es una pregunta';
         $content = 'Este es el contenido';
 
-        $this->actingAs($user = $this->defaultUser())
+        $this->actingAs($user)
 
         // When
             ->visit(route('posts.create'))
@@ -30,10 +38,18 @@ class CreatePostsTest extends FeatureTestCase
             'content' => $content,
             'pending' => true,
             'user_id' => $user->id,
+            'slug' => 'esta-es-una-pregunta'
+        ]);
+
+        $post = Post::first();
+
+        $this->seeInDatabase('subscriptions', [
+            'user_id' => $user->id,
+            'post_id' => $post->id
         ]);
 
         // Test a user is redirected to the posts details after creating it.
-        $this->see($title);
+        $this->seePageIs($post->url);
     }
 
     function test_creating_a_post_requires_authentication()
