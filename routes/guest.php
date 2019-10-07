@@ -1,7 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marcio
- * Date: 21/07/19
- * Time: 18:48
- */
+
+Route::get('register', [
+    'uses' => 'RegisterController@create',
+    'as' => 'register'
+]);
+
+Route::post('register', [
+    'uses' => 'RegisterController@store',
+    'as' => 'store'
+]);
+
+Route::get('login', [
+    'uses' => 'TokenController@create',
+    'as' => 'token'
+]);
+
+Route::post('login', [
+    'uses' => 'TokenController@store',
+]);
+
+Route::get('login/{token}', [
+    'uses' => 'LoginController@login',
+    'as' => 'login'
+]);
