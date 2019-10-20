@@ -1,10 +1,15 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Laravel\BrowserKitTesting\DatabaseTransactions;
+use Laravel\BrowserKitTesting\TestCase as TestCaseAlias;
+use Tests\CreatesApplication;
+use Tests\TestsHelper;
 
-class FeatureTestCase extends TestCase
+class FeatureTestCase extends TestCaseAlias
 {
-    use DatabaseTransactions;
+    use DatabaseTransactions, CreatesApplication, TestsHelper;
+
+    protected $connectionsToTransact = ['mysql_tests'];
 
     public function seeErrors(array $fields)
     {

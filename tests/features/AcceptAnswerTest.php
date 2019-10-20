@@ -4,7 +4,7 @@ use App\Comment;
 use App\User;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Laravel\BrowserKitTesting\DatabaseTransactions;
 
 class AcceptAnswerTest extends FeatureTestCase
 {
