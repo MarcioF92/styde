@@ -74,6 +74,20 @@ return [
             'engine' => null,
         ],
 
+        'mysql_dusk' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE_DUSK', 'styde_dusk'),
+            'username' => env('MYSQL_USER', env('DB_USERNAME', 'forge')),
+            'password' => env('MYSQL_PASSWORD', env('DB_PASSWORD', '')),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
     ],
 
     /*
